@@ -1,7 +1,5 @@
 package frogermcs.io.githubclient.ui.activity;
 
-import android.support.annotation.NonNull;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,11 +13,8 @@ import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
 
 import frogermcs.io.githubclient.BuildConfig;
-import frogermcs.io.githubclient.MockAppModule;
 import frogermcs.io.githubclient.TestGithubClientApplication;
-import frogermcs.io.githubclient.ui.activity.component.SplashActivityComponent;
-import frogermcs.io.githubclient.ui.activity.module.MockSplashActivityModule;
-import frogermcs.io.githubclient.ui.activity.module.SplashActivityModule;
+import frogermcs.io.githubclient.di.splash.SplashActivityComponent;
 import frogermcs.io.githubclient.utils.AnalyticsManager;
 
 import static org.mockito.Matchers.any;

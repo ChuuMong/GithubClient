@@ -1,7 +1,8 @@
 package frogermcs.io.githubclient;
 
-import frogermcs.io.githubclient.ui.activity.component.SplashActivityComponent;
-import frogermcs.io.githubclient.ui.activity.module.SplashActivityModule;
+import frogermcs.io.githubclient.di.AppComponent;
+import frogermcs.io.githubclient.di.splash.SplashActivityComponent;
+import frogermcs.io.githubclient.di.splash.SplashActivityModule;
 
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.mock;

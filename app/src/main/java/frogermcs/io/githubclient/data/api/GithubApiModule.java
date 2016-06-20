@@ -10,6 +10,7 @@ import dagger.Module;
 import dagger.Provides;
 import frogermcs.io.githubclient.BuildConfig;
 import frogermcs.io.githubclient.R;
+import frogermcs.io.githubclient.data.repository.UserRepository;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.RxJavaCallAdapterFactory;
@@ -58,7 +59,7 @@ public class GithubApiModule {
 
     @Provides
     @Singleton
-    public UserManager provideUserManager(GithubApiService githubApiService) {
-        return new UserManager(githubApiService);
+    public UserRepository provideUserManager(GithubApiService githubApiService) {
+        return new UserRepository(githubApiService);
     }
 }

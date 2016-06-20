@@ -1,8 +1,9 @@
-package frogermcs.io.githubclient.data.api;
+package frogermcs.io.githubclient.di.user;
 
 import dagger.Module;
 import dagger.Provides;
-import frogermcs.io.githubclient.data.UserScope;
+import frogermcs.io.githubclient.data.api.GithubApiService;
+import frogermcs.io.githubclient.data.repository.RepositoriesRepository;
 import frogermcs.io.githubclient.data.model.User;
 
 /**
@@ -25,7 +26,7 @@ public class UserModule {
 
     @Provides
     @UserScope
-    RepositoriesManager provideRepositoriesManager(User user, GithubApiService githubApiService) {
-        return new RepositoriesManager(user, githubApiService);
+    RepositoriesRepository provideRepositoriesManager(User user, GithubApiService githubApiService) {
+        return new RepositoriesRepository(user, githubApiService);
     }
 }

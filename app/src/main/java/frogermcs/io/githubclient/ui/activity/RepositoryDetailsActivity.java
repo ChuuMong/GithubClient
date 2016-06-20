@@ -12,12 +12,14 @@ import butterknife.ButterKnife;
 import frogermcs.io.githubclient.GithubClientApplication;
 import frogermcs.io.githubclient.R;
 import frogermcs.io.githubclient.data.model.Repository;
-import frogermcs.io.githubclient.ui.activity.module.RepositoryDetailsActivityModule;
-import frogermcs.io.githubclient.ui.activity.presenter.RepositoryDetailsActivityPresenter;
+import frogermcs.io.githubclient.di.detail.RepositoryDetailsActivityModule;
+import frogermcs.io.githubclient.presenter.detail.RepositoryDetailsConract.RepositoryDetailsPresenter;
+import frogermcs.io.githubclient.presenter.detail.RepositoryDetailsConract.RepositoryDetailsView;
 import frogermcs.io.githubclient.utils.AnalyticsManager;
 
 
-public class RepositoryDetailsActivity extends BaseActivity {
+public class RepositoryDetailsActivity extends BaseActivity implements RepositoryDetailsView {
+
     private static final String ARG_REPOSITORY = "arg_repository";
 
     @Bind(R.id.tvRepoName)
@@ -30,7 +32,7 @@ public class RepositoryDetailsActivity extends BaseActivity {
     @Inject
     AnalyticsManager analyticsManager;
     @Inject
-    RepositoryDetailsActivityPresenter presenter;
+    RepositoryDetailsPresenter presenter;
 
     private Repository repository;
 
@@ -56,12 +58,16 @@ public class RepositoryDetailsActivity extends BaseActivity {
 
     @Override
     protected void setupActivityComponent() {
-        GithubClientApplication.get(this).getUserComponent()
-                .plus(new RepositoryDetailsActivityModule(this))
-                .inject(this);
+        GithubClientApplication.get(this).getUserComponent().plus(new RepositoryDetailsActivityModule(this)).inject(this);
 
     }
 
+    @Override
+    public void showLoading(boolean isShow) {
+
+    }
+
+    @Override
     public void setupUserName(String userName) {
         tvUserName.setText(userName);
     }

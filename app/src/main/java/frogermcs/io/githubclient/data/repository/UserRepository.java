@@ -1,5 +1,6 @@
-package frogermcs.io.githubclient.data.api;
+package frogermcs.io.githubclient.data.repository;
 
+import frogermcs.io.githubclient.data.api.GithubApiService;
 import frogermcs.io.githubclient.data.api.response.UserResponse;
 import frogermcs.io.githubclient.data.model.User;
 import rx.Observable;
@@ -10,11 +11,11 @@ import rx.schedulers.Schedulers;
 /**
  * Created by Miroslaw Stanek on 22.04.15.
  */
-public class UserManager {
+public class UserRepository {
 
     private GithubApiService githubApiService;
 
-    public UserManager(GithubApiService githubApiService) {
+    public UserRepository(GithubApiService githubApiService) {
         this.githubApiService = githubApiService;
     }
 

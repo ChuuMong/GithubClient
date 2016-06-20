@@ -1,4 +1,4 @@
-package frogermcs.io.githubclient.ui.activity.module;
+package frogermcs.io.githubclient.di.list;
 
 import android.support.v7.widget.LinearLayoutManager;
 
@@ -8,11 +8,12 @@ import dagger.Module;
 import dagger.Provides;
 import dagger.multibindings.IntKey;
 import dagger.multibindings.IntoMap;
-import frogermcs.io.githubclient.data.api.RepositoriesManager;
+import frogermcs.io.githubclient.data.repository.RepositoriesRepository;
 import frogermcs.io.githubclient.data.model.Repository;
-import frogermcs.io.githubclient.ui.activity.ActivityScope;
+import frogermcs.io.githubclient.di.ActivityScope;
+import frogermcs.io.githubclient.presenter.list.RepositoriesListContract.RepositoriesListPresenter;
+import frogermcs.io.githubclient.presenter.list.RepositoriesListPresenterImpl;
 import frogermcs.io.githubclient.ui.activity.RepositoriesListActivity;
-import frogermcs.io.githubclient.ui.activity.presenter.RepositoriesListActivityPresenter;
 import frogermcs.io.githubclient.ui.adapter.RepositoriesListAdapter;
 import frogermcs.io.githubclient.ui.adapter.viewholder.RepositoriesListViewHolderFactory;
 import frogermcs.io.githubclient.ui.adapter.viewholder.RepositoryViewHolderBigFactory;
@@ -38,8 +39,8 @@ public class RepositoriesListActivityModule {
 
     @Provides
     @ActivityScope
-    RepositoriesListActivityPresenter provideRepositoriesListActivityPresenter(RepositoriesManager repositoriesManager) {
-        return new RepositoriesListActivityPresenter(repositoriesListActivity, repositoriesManager);
+    RepositoriesListPresenter provideRepositoriesListActivityPresenter(RepositoriesRepository repositoriesRepository) {
+        return new RepositoriesListPresenterImpl(repositoriesListActivity, repositoriesRepository);
     }
 
     @Provides

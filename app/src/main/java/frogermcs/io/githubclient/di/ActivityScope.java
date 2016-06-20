@@ -1,4 +1,4 @@
-package frogermcs.io.githubclient.ui.activity;
+package frogermcs.io.githubclient.di;
 
 import javax.inject.Scope;
 

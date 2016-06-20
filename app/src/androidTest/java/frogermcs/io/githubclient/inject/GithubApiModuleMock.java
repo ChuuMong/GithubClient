@@ -2,21 +2,21 @@ package frogermcs.io.githubclient.inject;
 
 import frogermcs.io.githubclient.data.api.GithubApiModule;
 import frogermcs.io.githubclient.data.api.GithubApiService;
-import frogermcs.io.githubclient.data.api.UserManager;
+import frogermcs.io.githubclient.data.repository.UserRepository;
 
 /**
  * Created by Miroslaw Stanek on 23.09.15.
  */
 public class GithubApiModuleMock extends GithubApiModule {
 
-    private UserManager userManagerMock;
+    private UserRepository userRepositoryMock;
 
-    public GithubApiModuleMock(UserManager userManagerMock) {
-        this.userManagerMock = userManagerMock;
+    public GithubApiModuleMock(UserRepository userRepositoryMock) {
+        this.userRepositoryMock = userRepositoryMock;
     }
 
     @Override
-    public UserManager provideUserManager(GithubApiService githubApiService) {
-        return userManagerMock;
+    public UserRepository provideUserManager(GithubApiService githubApiService) {
+        return userRepositoryMock;
     }
 }

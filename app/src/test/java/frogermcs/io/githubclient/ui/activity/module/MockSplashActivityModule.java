@@ -1,10 +1,11 @@
 package frogermcs.io.githubclient.ui.activity.module;
 
 import dagger.Provides;
-import frogermcs.io.githubclient.data.api.UserManager;
-import frogermcs.io.githubclient.ui.activity.ActivityScope;
+import frogermcs.io.githubclient.data.repository.UserRepository;
+import frogermcs.io.githubclient.di.ActivityScope;
+import frogermcs.io.githubclient.di.splash.SplashActivityModule;
+import frogermcs.io.githubclient.presenter.splash.SplashActivityPresenterImpl;
 import frogermcs.io.githubclient.ui.activity.SplashActivity;
-import frogermcs.io.githubclient.ui.activity.presenter.SplashActivityPresenter;
 import frogermcs.io.githubclient.utils.Validator;
 
 import static org.mockito.Mockito.mock;
@@ -20,7 +21,7 @@ public class MockSplashActivityModule extends SplashActivityModule {
 
     @Provides
     @ActivityScope
-    SplashActivityPresenter provideSplashActivityPresenter(Validator validator, UserManager userManager) {
-        return mock(SplashActivityPresenter.class);
+    SplashActivityPresenterImpl provideSplashActivityPresenter(Validator validator, UserRepository userRepository) {
+        return mock(SplashActivityPresenterImpl.class);
     }
 }

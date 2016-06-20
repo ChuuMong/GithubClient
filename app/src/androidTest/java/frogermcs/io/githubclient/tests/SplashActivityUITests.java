@@ -2,7 +2,6 @@ package frogermcs.io.githubclient.tests;
 
 import android.content.Intent;
 import android.support.test.InstrumentationRegistry;
-import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
@@ -15,7 +14,7 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import frogermcs.io.githubclient.R;
-import frogermcs.io.githubclient.data.api.UserManager;
+import frogermcs.io.githubclient.data.repository.UserRepository;
 import frogermcs.io.githubclient.data.model.User;
 import frogermcs.io.githubclient.inject.ApplicationMock;
 import frogermcs.io.githubclient.inject.GithubApiModuleMock;
@@ -40,7 +39,7 @@ import static org.mockito.Matchers.anyString;
 public class SplashActivityUITests {
 
     @Mock
-    UserManager userManagerMock;
+    UserRepository userRepositoryMock;
 
     @Rule
     public ActivityTestRule<SplashActivity> activityRule = new ActivityTestRule<>(
@@ -50,7 +49,7 @@ public class SplashActivityUITests {
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        GithubApiModuleMock githubApiModuleMock = new GithubApiModuleMock(userManagerMock);
+        GithubApiModuleMock githubApiModuleMock = new GithubApiModuleMock(userRepositoryMock);
         ApplicationMock app = (ApplicationMock) InstrumentationRegistry.getTargetContext().getApplicationContext();
         app.setGithubApiModuleMock(githubApiModuleMock);
         activityRule.launchActivity(new Intent());
@@ -58,7 +57,7 @@ public class SplashActivityUITests {
 
     @Test
     public void checkLoadingError() {
-        Mockito.when(userManagerMock.getUser(anyString()))
+        Mockito.when(userRepositoryMock.getUser(anyString()))
                 .thenReturn(Observable.<User>error(new RuntimeException("test")));
 
         onView(withId(R.id.etUsername)).perform(typeText("frogermcs"));
@@ -75,7 +74,7 @@ public class SplashActivityUITests {
         user.login = "frogermcs";
         user.url = null;
 
-        Mockito.when(userManagerMock.getUser(anyString())).thenReturn(Observable.just(user));
+        Mockito.when(userRepositoryMock.getUser(anyString())).thenReturn(Observable.just(user));
 
         onView(withId(R.id.pbLoading)).check(matches(not(isDisplayed())));
 

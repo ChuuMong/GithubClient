@@ -1,10 +1,10 @@
 package frogermcs.io.githubclient.inject;
 
-import frogermcs.io.githubclient.AppComponent;
-import frogermcs.io.githubclient.AppModule;
-import frogermcs.io.githubclient.DaggerAppComponent;
 import frogermcs.io.githubclient.GithubClientApplication;
 import frogermcs.io.githubclient.data.api.GithubApiModule;
+import frogermcs.io.githubclient.di.AppComponent;
+import frogermcs.io.githubclient.di.AppModule;
+import frogermcs.io.githubclient.di.DaggerAppComponent;
 
 /**
  * Created by Miroslaw Stanek on 24.09.15.

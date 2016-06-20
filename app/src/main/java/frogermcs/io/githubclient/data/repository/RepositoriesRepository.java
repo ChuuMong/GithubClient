@@ -1,9 +1,10 @@
-package frogermcs.io.githubclient.data.api;
+package frogermcs.io.githubclient.data.repository;
 
 import com.google.common.collect.ImmutableList;
 
 import java.util.List;
 
+import frogermcs.io.githubclient.data.api.GithubApiService;
 import frogermcs.io.githubclient.data.api.response.RepositoryResponse;
 import frogermcs.io.githubclient.data.model.Repository;
 import frogermcs.io.githubclient.data.model.User;
@@ -15,11 +16,11 @@ import rx.schedulers.Schedulers;
 /**
  * Created by Miroslaw Stanek on 22.04.15.
  */
-public class RepositoriesManager {
+public class RepositoriesRepository {
     private User user;
     private GithubApiService githubApiService;
 
-    public RepositoriesManager(User user, GithubApiService githubApiService) {
+    public RepositoriesRepository(User user, GithubApiService githubApiService) {
         this.user = user;
         this.githubApiService = githubApiService;
     }

@@ -1,10 +1,8 @@
-package frogermcs.io.githubclient.ui.activity.component;
+package frogermcs.io.githubclient.di.list;
 
 import dagger.Subcomponent;
-import frogermcs.io.githubclient.ui.activity.ActivityScope;
+import frogermcs.io.githubclient.di.ActivityScope;
 import frogermcs.io.githubclient.ui.activity.RepositoriesListActivity;
-import frogermcs.io.githubclient.ui.activity.module.RepositoriesListActivityModule;
-import frogermcs.io.githubclient.ui.activity.presenter.RepositoriesListActivityPresenter;
 
 /**
  * Created by Miroslaw Stanek on 23.04.15.

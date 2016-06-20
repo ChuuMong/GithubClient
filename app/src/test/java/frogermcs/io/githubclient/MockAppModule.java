@@ -5,6 +5,7 @@ import android.app.Application;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import frogermcs.io.githubclient.di.AppModule;
 import frogermcs.io.githubclient.utils.AnalyticsManager;
 
 /**
@@ -20,7 +21,7 @@ public class MockAppModule extends AppModule {
     }
 
     @Override
-    AnalyticsManager provideAnalyticsManager() {
+    public AnalyticsManager provideAnalyticsManager() {
         return analyticsManagerMock;
     }
 }

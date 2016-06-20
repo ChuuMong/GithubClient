@@ -5,15 +5,18 @@ import android.content.Context;
 
 import com.frogermcs.androiddevmetrics.AndroidDevMetrics;
 
-import frogermcs.io.githubclient.data.UserComponent;
-import frogermcs.io.githubclient.data.api.UserModule;
+import frogermcs.io.githubclient.di.user.UserComponent;
+import frogermcs.io.githubclient.di.user.UserModule;
 import frogermcs.io.githubclient.data.model.User;
+import frogermcs.io.githubclient.di.AppComponent;
+import frogermcs.io.githubclient.di.AppModule;
+import frogermcs.io.githubclient.di.DaggerAppComponent;
 import timber.log.Timber;
 
 /**
  * Created by Miroslaw Stanek on 22.04.15.
  */
-    public class GithubClientApplication extends Application {
+public class GithubClientApplication extends Application {
 
     private AppComponent appComponent;
     private UserComponent userComponent;
@@ -34,9 +37,7 @@ import timber.log.Timber;
     }
 
     private void initAppComponent() {
-        appComponent = DaggerAppComponent.builder()
-                .appModule(new AppModule(this))
-                .build();
+        appComponent = DaggerAppComponent.builder().appModule(new AppModule(this)).build();
     }
 
     public UserComponent createUserComponent(User user) {
